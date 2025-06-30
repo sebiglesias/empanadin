@@ -1,5 +1,5 @@
 const CACHE_NAME = "empanadas-pwa-v1"
-const basePath = location.pathname.includes("/empanada-calculator") ? "/empanada-calculator" : ""
+const basePath = location.pathname.includes("/empanadin") ? "/empanadin" : ""
 const urlsToCache = [
   `${basePath}/`,
   `${basePath}/manifest.json`,

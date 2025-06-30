@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
-  const basePath = process.env.NODE_ENV === "production" ? "/empanada-calculator" : ""
+  const basePath = process.env.NODE_ENV === "production" ? "/empanadin" : ""
 
   return {
     name: "Calculadora de Empanadas",
@@ -17,13 +17,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: `${basePath}/icon-192x192.png`,
         sizes: "192x192",
         type: "image/png",
-        purpose: "any maskable",
+        purpose: "maskable",
       },
       {
         src: `${basePath}/icon-512x512.png`,
         sizes: "512x512",
         type: "image/png",
-        purpose: "any maskable",
+        purpose: "maskable",
       },
     ],
   }

@@ -11,9 +11,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // Remover assetPrefix y basePath para desarrollo local
-  // assetPrefix: process.env.NODE_ENV === 'production' ? '/empanada-calculator/' : '',
-  // basePath: process.env.NODE_ENV === 'production' ? '/empanada-calculator' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/empanadin/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/empanadin' : '',
 }
 
 export default nextConfig

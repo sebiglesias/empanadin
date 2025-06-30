@@ -2,3 +2,4 @@
 DS_STORE
 .next/
 node_modules
+out

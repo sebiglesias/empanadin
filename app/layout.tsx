@@ -5,6 +5,11 @@ import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
+const basePath = process.env.NODE_ENV === "production" ? "/empanadin" : ""
+const baseUrl =
+    process.env.NODE_ENV === "production" ? "https://sebiglesias.github.io/empanadin" : "http://localhost:3000"
+
+
 export const metadata: Metadata = {
     title: "Calculadora de Empanadas",
     description:
@@ -17,14 +22,14 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         locale: "es_AR",
-        url: "https://sebiglesias.com.ar/empanadin",
+        url: baseUrl,
         siteName: "Calculadora de Empanadas",
         title: "🥟 Calculadora de Empanadas",
         description:
             "Organiza tu pedido de empanadas con amigos. Agrega personas, selecciona tipos y cantidades, y obtén el resumen total para llamar.",
         images: [
             {
-                url: "https://sebiglesias.com.ar/empanadin/og-image.png",
+                url: `${baseUrl}/og-image.png`,
                 width: 1200,
                 height: 630,
                 alt: "Calculadora de Empanadas - Organiza tu pedido con amigos",
@@ -40,7 +45,7 @@ export const metadata: Metadata = {
         title: "🥟 Calculadora de Empanadas",
         description:
             "Organiza tu pedido de empanadas con amigos. Agrega personas, selecciona tipos y cantidades, y obtén el resumen total para llamar.",
-        images: ["https://sebiglesias.com.ar/empanadin/og-image.png"],
+        images: [`${baseUrl}/og-image.png`],
     },
 
     // PWA
