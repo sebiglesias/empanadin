@@ -50,18 +50,18 @@ npm install
 
 # Ejecutar en modo desarrollo
 npm run dev
-\\\
+```
 
 La app estará disponible en [http://localhost:3000](http://localhost:3000)
 
 ### Scripts disponibles
 
-\\\bash
+```bash
 npm run dev      # Desarrollo local
 npm run build    # Build para producción
 npm run start    # Ejecutar build de producción
 npm run lint     # Verificar código con ESLint
-\\\
+```
 
 ## 📦 Deployment
 
@@ -69,12 +69,12 @@ La app se deploya automáticamente en GitHub Pages usando GitHub Actions.
 
 ### Deploy manual
 
-\\\bash
+```bash
 # Build estático
 npm run build
 
 # Los archivos estarán en ./out/
-\\\
+```
 
 ### Configuración para GitHub Pages
 
