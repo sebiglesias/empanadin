@@ -2,6 +2,7 @@ import type React from "react"
 import type {Metadata, Viewport} from "next"
 import Script from "next/script"
 import { Inter } from "next/font/google"
+import { faqs } from "./faq-data"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -129,6 +130,26 @@ export default function RootLayout({
                             "name": "Sebastián Iglesias",
                             "url": "https://sebiglesias.com.ar"
                         }
+                    })
+                }}
+            />
+
+            {/* JSON-LD FAQPage Schema */}
+            <Script
+                id="json-ld-faqpage"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map((faq) => ({
+                            "@type": "Question",
+                            "name": faq.question,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": faq.answer,
+                            },
+                        })),
                     })
                 }}
             />
