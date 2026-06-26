@@ -1,5 +1,6 @@
 import type React from "react"
 import type {Metadata, Viewport} from "next"
+import Script from "next/script"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -11,9 +12,9 @@ const baseUrl =
 
 
 export const metadata: Metadata = {
-    title: "Calculadora de Empanadas",
+    title: "Calculadora de Empanadas para Juntadas | Empanadin",
     description:
-        "Organiza tu pedido de empanadas con amigos. Agrega personas, selecciona tipos y cantidades, y obtén el resumen total para llamar.",
+        "Calculadora para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas empanadas por persona, comparte por WhatsApp. ¡Gratis y sin publicidad!",
     keywords: ["empanadas", "calculadora", "pedido", "amigos", "argentina", "comida"],
     authors: [{ name: "Sebastián Iglesias", url: "https://sebiglesias.com.ar" }],
     creator: "Sebastián Iglesias",
@@ -24,12 +25,12 @@ export const metadata: Metadata = {
         locale: "es_AR",
         url: baseUrl,
         siteName: "Calculadora de Empanadas",
-        title: "🥟 Calculadora de Empanadas",
+        title: "🥟 Calculadora de Empanadas para Juntadas",
         description:
-            "Organiza tu pedido de empanadas con amigos. Agrega personas, selecciona tipos y cantidades, y obtén el resumen total para llamar.",
+            "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
         images: [
             {
-                url: `${baseUrl}/og-image.png`,
+                url: `${baseUrl}/opengraph-image.png`,
                 width: 1200,
                 height: 630,
                 alt: "Calculadora de Empanadas - Organiza tu pedido con amigos",
@@ -40,12 +41,12 @@ export const metadata: Metadata = {
     // Twitter Cards
     twitter: {
         card: "summary_large_image",
-        site: "@sebiglesias", // Cambia por tu usuario de Twitter si tienes
+        site: "@sebiglesias",
         creator: "@sebiglesias",
-        title: "🥟 Calculadora de Empanadas",
+        title: "🥟 Calculadora de Empanadas para Juntadas",
         description:
-            "Organiza tu pedido de empanadas con amigos. Agrega personas, selecciona tipos y cantidades, y obtén el resumen total para llamar.",
-        images: [`${baseUrl}/og-image.png`],
+            "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
+        images: [`${baseUrl}/opengraph-image.png`],
     },
 
     // PWA
@@ -102,7 +103,35 @@ export default function RootLayout({
             <meta name="msapplication-TileColor" content="#ea580c" />
 
             {/* Canonical URL */}
-            <link rel="canonical" href="https://sebiglesias.com.ar/empanadin" />
+            <link rel="canonical" href={baseUrl} />
+
+            {/* JSON-LD WebApplication Schema */}
+            <Script
+                id="json-ld-webapp"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebApplication",
+                        "name": "Calculadora de Empanadas",
+                        "description": "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido con amigos, divide costos y comparte por WhatsApp.",
+                        "url": baseUrl,
+                        "applicationCategory": "UtilitiesApplication",
+                        "operatingSystem": "Any",
+                        "inLanguage": "es-AR",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "ARS"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Sebastián Iglesias",
+                            "url": "https://sebiglesias.com.ar"
+                        }
+                    })
+                }}
+            />
         </head>
         <body className={inter.className}>{children}</body>
         </html>

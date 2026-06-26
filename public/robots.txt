@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sebiglesias.github.io/empanadin/sitemap.xml

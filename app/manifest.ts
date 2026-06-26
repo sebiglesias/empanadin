@@ -12,6 +12,9 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: "#ea580c",
     orientation: "portrait",
+    lang: "es-AR",
+    dir: "ltr",
+    categories: ["food", "utilities", "productivity"],
     icons: [
       {
         src: `${basePath}/icon-192x192.png`,
