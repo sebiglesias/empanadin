@@ -15,7 +15,20 @@ interface Persona {
   empanadas: Empanada[]
 }
 
-const tiposEmpanadas = ["Carne", "Pollo", "Jamón y Queso", "Caprese", "Verdura", "Humita", "Cebolla y Queso", "Atún"]
+const tiposEmpanadas = [
+  "Carne",
+  "Pollo",
+  "Jamón y Queso",
+  "Caprese",
+  "Verdura",
+  "Humita",
+  "Cebolla y Queso",
+  "Atún",
+  "Roquefort y Nuez",
+  "Champiñones",
+  "Espinaca",
+  "Queso y Jalapeño",
+]
 
 export default function EmpanadasCalculator() {
   const [personas, setPersonas] = useState<Persona[]>([])
@@ -856,15 +869,6 @@ export default function EmpanadasCalculator() {
                   </button>
                 </div>
             )}
-
-            <footer style={styles.footer}>
-              <p>
-                Hecho con ❤️ por{" "}
-                <a href="https://sebiglesias.com.ar" target="_blank" rel="noopener noreferrer" style={styles.link}>
-                  Sebastián Iglesias
-                </a>
-              </p>
-            </footer>
           </div>
         </div>
       </>

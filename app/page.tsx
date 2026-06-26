@@ -59,7 +59,19 @@ export default function Page() {
         </div>
 
         <EmpanadasCalculator />
-        <FAQ />
+
+        <div style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+          <FAQ />
+        </div>
+
+        <footer style={{ textAlign: "center", paddingTop: "2rem", borderTop: "1px solid #ea580c", color: "#6b7280", fontSize: "0.9rem", marginTop: "2rem" }}>
+          <p>
+            Hecho con ❤️ por{" "}
+            <a href="https://sebiglesias.com.ar" target="_blank" rel="noopener noreferrer" style={{ color: "#ea580c", textDecoration: "none", fontWeight: "500" }}>
+              Sebastián Iglesias
+            </a>
+          </p>
+        </footer>
       </>
   )
 }
