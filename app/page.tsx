@@ -64,6 +64,26 @@ export default function Page() {
           <FAQ />
         </div>
 
+        <nav aria-label="Otras calculadoras para juntadas" style={{ maxWidth: "800px", margin: "2rem auto 0", padding: "1.2rem 1rem 0", borderTop: "1px solid #fed7aa", textAlign: "center" }}>
+          <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#9a3412", marginBottom: "0.6rem", fontWeight: "600" }}>
+            Más herramientas para la juntada
+          </span>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.5rem" }}>
+            <a href="https://sebiglesias.com.ar/asadin/" style={{ padding: "0.35rem 0.75rem", border: "1px solid #fdba74", borderRadius: "9999px", color: "#c2410c", textDecoration: "none", fontSize: "0.85rem", background: "white" }}>
+              🥩 Asadín
+            </a>
+            <span style={{ padding: "0.35rem 0.75rem", border: "1px solid #ea580c", borderRadius: "9999px", color: "white", fontSize: "0.85rem", background: "#ea580c", fontWeight: "600" }}>
+              🥟 Empanadín
+            </span>
+            <a href="https://sebiglesias.com.ar/pizzadita/" style={{ padding: "0.35rem 0.75rem", border: "1px solid #fdba74", borderRadius: "9999px", color: "#c2410c", textDecoration: "none", fontSize: "0.85rem", background: "white" }}>
+              🍕 Pizzadita
+            </a>
+            <a href="https://sebiglesias.com.ar/picada/" style={{ padding: "0.35rem 0.75rem", border: "1px solid #fdba74", borderRadius: "9999px", color: "#c2410c", textDecoration: "none", fontSize: "0.85rem", background: "white" }}>
+              🧀 Picada
+            </a>
+          </div>
+        </nav>
+
         <footer style={{ textAlign: "center", paddingTop: "2rem", borderTop: "1px solid #ea580c", color: "#6b7280", fontSize: "0.9rem", marginTop: "2rem" }}>
           <p>
             Hecho con ❤️ por{" "}

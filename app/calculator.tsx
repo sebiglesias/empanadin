@@ -229,14 +229,25 @@ export default function EmpanadasCalculator() {
     }
 
     mensaje += "\n---\n"
-    mensaje += "📱 Calculado con: Calculadora de Empanadas\n"
-    mensaje += "🔗 https://sebiglesias.com.ar/empanadin"
+    mensaje += "📱 Calculado con Empanadín:\n"
+    mensaje += "🔗 https://sebiglesias.com.ar/empanadin/?utm_source=whatsapp&utm_medium=share&utm_campaign=empanada_split"
 
     return mensaje
   }
 
-  const compartirWhatsApp = () => {
+  const compartirWhatsApp = async () => {
     const mensaje = generarMensajeWhatsApp()
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: "Pedido de Empanadas",
+          text: mensaje,
+        })
+        return
+      } catch (err: any) {
+        if (err.name === "AbortError") return
+      }
+    }
     const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`
     window.open(url, "_blank")
   }
