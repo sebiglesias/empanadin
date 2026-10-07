@@ -40,6 +40,12 @@ export default function EmpanadasCalculator() {
   const [mostrarPrecios, setMostrarPrecios] = useState(false)
   const [modoPrecio, setModoPrecio] = useState<"porEmpanada" | "total">("porEmpanada")
   const [precioTotal, setPrecioTotal] = useState<number>(0)
+  const [aliasTransferencia, setAliasTransferencia] = useState("")
+
+  const handleAliasChange = (valor: string) => {
+    setAliasTransferencia(valor)
+    localStorage.setItem("empanadas-alias", valor)
+  }
 
   useEffect(() => {
     const datosGuardados = localStorage.getItem("empanadas-data")
@@ -47,6 +53,7 @@ export default function EmpanadasCalculator() {
     const precioGuardado = localStorage.getItem("empanadas-precio")
     const modoGuardado = localStorage.getItem("empanadas-modo-precio")
     const precioTotalGuardado = localStorage.getItem("empanadas-precio-total")
+    const aliasGuardado = localStorage.getItem("empanadas-alias")
 
     if (datosGuardados) {
       setPersonas(JSON.parse(datosGuardados))
@@ -56,6 +63,9 @@ export default function EmpanadasCalculator() {
     }
     if (precioGuardado) {
       setPrecioEmpanada(Number(precioGuardado))
+    }
+    if (aliasGuardado) {
+      setAliasTransferencia(aliasGuardado)
     }
     if (modoGuardado) {
       setModoPrecio(modoGuardado as "porEmpanada" | "total")
@@ -214,9 +224,13 @@ export default function EmpanadasCalculator() {
       }
     })
 
+    if (aliasTransferencia.trim()) {
+      mensaje += `\n💳 *DATOS DE TRANSFERENCIA:*\nAlias / CBU: *${aliasTransferencia.trim()}*\n`
+    }
+
     mensaje += "\n---\n"
     mensaje += "📱 Calculado con: Calculadora de Empanadas\n"
-    mensaje += "🔗 https://sebiglesias.github.io/empanadin"
+    mensaje += "🔗 https://sebiglesias.com.ar/empanadin"
 
     return mensaje
   }
@@ -457,6 +471,20 @@ export default function EmpanadasCalculator() {
             <div style={styles.header}>
               <h2 style={styles.title}>🥟 Calculadora de Empanadas</h2>
               <p style={styles.subtitle}>Organiza tu pedido de empanadas con amigos</p>
+            </div>
+
+            <div style={{
+              backgroundColor: "#fff7ed",
+              border: "1px solid #ffedd5",
+              borderRadius: "0.5rem",
+              padding: "0.75rem 1rem",
+              marginBottom: "1rem",
+              fontSize: "0.92rem",
+              color: "#9a3412",
+              textAlign: "center",
+              lineHeight: "1.4"
+            }}>
+              💡 <strong>¿Cuántas empanadas por persona?</strong> Lo estándar para una juntada son <strong>3 a 4 empanadas por adulto</strong> (o 4 a 5 si comen bastante y no hay entrada).
             </div>
 
             <div style={styles.card}>
@@ -839,6 +867,28 @@ export default function EmpanadasCalculator() {
                       }
                       return null
                     })}
+                  </div>
+
+                  <div style={{ marginBottom: "1.25rem" }}>
+                    <label style={{ display: "block", fontSize: "0.9rem", fontWeight: "600", color: "#166534", marginBottom: "0.35rem" }}>
+                      💳 Alias o CBU para cobrar (opcional)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ej: tu.alias.mp o 00000031..."
+                      value={aliasTransferencia}
+                      onChange={(e) => handleAliasChange(e.target.value)}
+                      style={{
+                        ...styles.input,
+                        width: "100%",
+                        backgroundColor: "white",
+                        borderColor: "#86efac",
+                        fontSize: "0.95rem",
+                      }}
+                    />
+                    <p style={{ fontSize: "0.8rem", color: "#15803d", marginTop: "0.25rem", marginBottom: 0 }}>
+                      Se incluirá automáticamente en el mensaje de WhatsApp para que te transfieran directo.
+                    </p>
                   </div>
 
                   <div style={styles.flexWrap}>

@@ -9,14 +9,22 @@ const inter = Inter({ subsets: ["latin"] })
 
 const basePath = process.env.NODE_ENV === "production" ? "/empanadin" : ""
 const baseUrl =
-    process.env.NODE_ENV === "production" ? "https://sebiglesias.github.io/empanadin" : "http://localhost:3000"
+    process.env.NODE_ENV === "production" ? "https://sebiglesias.com.ar/empanadin" : "http://localhost:3000"
 
 
 export const metadata: Metadata = {
     title: "Calculadora de Empanadas para Juntadas | Empanadin",
     description:
-        "Calculadora para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas empanadas por persona, comparte por WhatsApp. ¡Gratis y sin publicidad!",
-    keywords: ["empanadas", "calculadora", "pedido", "amigos", "argentina", "comida"],
+        "Calculadora para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas empanadas por persona se necesitan y divide costos fácilmente.",
+    keywords: [
+        "empanadas",
+        "calculadora de empanadas",
+        "cuantas empanadas por persona",
+        "cuantas empanadas se calcula por persona",
+        "calcular empanadas juntada",
+        "pedido empanadas amigos",
+        "argentina"
+    ],
     authors: [{ name: "Sebastián Iglesias", url: "https://sebiglesias.com.ar" }],
     creator: "Sebastián Iglesias",
 

@@ -1,8 +1,13 @@
 export const faqs = [
   {
-    question: "¿Cómo calculo cuántas empanadas por persona?",
+    question: "¿Cuántas empanadas se calculan por persona?",
     answer:
-        "Una regla común es calcular 4-6 empanadas por persona, pero depende del apetito. Puedes probar diferentes cantidades y la calculadora automáticamente te mostrará el total. Muchos grupos usan: 4 para comer poco, 5 para normal, 6+ para comer bastante.",
+        "La regla estándar en Argentina para una juntada o cena es calcular entre 3 y 4 empanadas por persona adulta. Si las empanadas son plato único y el grupo tiene buen apetito, se recomienda estimar 4 a 5 empanadas por persona. Si además hay picada, ensalada o postre, con 2 a 3 empanadas suele ser suficiente. Para niños, lo habitual es calcular 1 a 2 empanadas.",
+  },
+  {
+    question: "¿Cuántas docenas de empanadas necesito para 10, 15 o 20 personas?",
+    answer:
+        "Para 10 personas se calculan unas 3 docenas (36 empanadas). Para 15 personas, entre 4 y 5 docenas (48 a 60 empanadas). Para 20 personas, entre 6 y 7 docenas (72 a 84 empanadas). Usá la calculadora arriba para sumar los gustos de cada amigo y no pedir de más ni de menos.",
   },
   {
     question: "¿Cómo divido los costos si cada persona pide cantidades diferentes?",
