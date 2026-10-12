@@ -9,10 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 
 const basePath = process.env.NODE_ENV === "production" ? "/empanadin" : ""
 const baseUrl =
-    process.env.NODE_ENV === "production" ? "https://sebiglesias.com.ar/empanadin" : "http://localhost:3000"
+    process.env.NODE_ENV === "production" ? "https://sebiglesias.com.ar/empanadin/" : "http://localhost:3000/"
 
 
 export const metadata: Metadata = {
+    metadataBase: new URL(baseUrl),
     title: "Calculadora de Empanadas para Juntadas | Empanadin",
     description:
         "Calculadora para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas empanadas por persona se necesitan y divide costos fácilmente.",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
             "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
         images: [
             {
-                url: `${baseUrl}/opengraph-image.png`,
+                url: `${baseUrl}opengraph-image.png`,
                 width: 1200,
                 height: 630,
                 alt: "Calculadora de Empanadas - Organiza tu pedido con amigos",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
         title: "🥟 Calculadora de Empanadas para Juntadas",
         description:
             "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
-        images: [`${baseUrl}/opengraph-image.png`],
+        images: [`${baseUrl}opengraph-image.png`],
     },
 
     // PWA
