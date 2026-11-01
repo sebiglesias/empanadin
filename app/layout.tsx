@@ -8,23 +8,27 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 const basePath = process.env.NODE_ENV === "production" ? "/empanadin" : ""
-const baseUrl =
-    process.env.NODE_ENV === "production" ? "https://sebiglesias.com.ar/empanadin/" : "http://localhost:3000/"
-
+const domainUrl =
+    process.env.NODE_ENV === "production" ? "https://sebiglesias.com.ar" : "http://localhost:3000"
+const baseUrl = `${domainUrl}${basePath}/`
 
 export const metadata: Metadata = {
-    metadataBase: new URL(baseUrl),
-    title: "Calculadora de Empanadas para Juntadas | Empanadin",
+    metadataBase: new URL(domainUrl),
+    title: "¿Cuántas Empanadas por Persona? Calculadora de Docenas | Empanadín",
     description:
-        "Calculadora para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas empanadas por persona se necesitan y divide costos fácilmente.",
+        "Calculá cuántas empanadas pedir o cocinar: 3 a 4 por adulto, tabla rápida de docenas para 10, 20 o 50 personas, gustos recomendados y división de gastos.",
     keywords: [
-        "empanadas",
-        "calculadora de empanadas",
         "cuantas empanadas por persona",
         "cuantas empanadas se calcula por persona",
+        "cuantas empanadas para 20 personas",
+        "cuantas docenas de empanadas para 50 personas",
+        "cuantas empanadas de copetin por persona",
+        "cuantas empanadas salen con 1 kilo de carne",
+        "calculadora de empanadas",
+        "contador de empanadas",
         "calcular empanadas juntada",
         "pedido empanadas amigos",
-        "argentina"
+        "empanadas por persona argentina"
     ],
     authors: [{ name: "Sebastián Iglesias", url: "https://sebiglesias.com.ar" }],
     creator: "Sebastián Iglesias",
@@ -34,16 +38,16 @@ export const metadata: Metadata = {
         type: "website",
         locale: "es_AR",
         url: baseUrl,
-        siteName: "Calculadora de Empanadas",
-        title: "🥟 Calculadora de Empanadas para Juntadas",
+        siteName: "Empanadín",
+        title: "🥟 ¿Cuántas Empanadas por Persona? Calculadora de Docenas para Juntadas",
         description:
-            "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
+            "Calculá al instante cuántas empanadas pedir: 3 a 4 por adulto. Tabla de docenas para 10, 20 o 50 personas, gustos y división de gastos.",
         images: [
             {
                 url: `${baseUrl}opengraph-image.png`,
                 width: 1200,
                 height: 630,
-                alt: "Calculadora de Empanadas - Organiza tu pedido con amigos",
+                alt: "Calculadora de Empanadas por Persona - Empanadín",
             },
         ],
     },
@@ -53,14 +57,14 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         site: "@sebiglesias",
         creator: "@sebiglesias",
-        title: "🥟 Calculadora de Empanadas para Juntadas",
+        title: "🥟 ¿Cuántas Empanadas por Persona? Calculadora de Docenas para Juntadas",
         description:
-            "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido, divide costos y comparte por WhatsApp.",
+            "Calculá al instante cuántas empanadas pedir: 3 a 4 por adulto. Tabla de docenas para 10, 20 o 50 personas, gustos y división de gastos.",
         images: [`${baseUrl}opengraph-image.png`],
     },
 
     // PWA
-    manifest: "/manifest.json",
+    manifest: `${basePath}/manifest.json`,
 
     // Apple
     appleWebApp: {
@@ -100,9 +104,9 @@ export default function RootLayout({
         <html lang="es">
         <head>
             {/* Favicons */}
-            <link rel="apple-touch-icon" href="/icon-192x192.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png" />
+            <link rel="apple-touch-icon" href={`${basePath}/icon-192x192.png`} />
+            <link rel="icon" type="image/png" sizes="32x32" href={`${basePath}/icon-32x32.png`} />
+            <link rel="icon" type="image/png" sizes="16x16" href={`${basePath}/icon-16x16.png`} />
 
             {/* Apple PWA */}
             <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -114,6 +118,15 @@ export default function RootLayout({
 
             {/* Canonical URL */}
             <link rel="canonical" href={baseUrl} />
+
+            {/* Google AdSense */}
+            <meta name="google-adsense-account" content="ca-pub-3381238987477190" />
+            <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190"
+                crossOrigin="anonymous"
+                strategy="afterInteractive"
+            />
 
             {/* Google tag (gtag.js) */}
             <Script
@@ -137,8 +150,8 @@ export default function RootLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "WebApplication",
-                        "name": "Calculadora de Empanadas",
-                        "description": "Calcula cuántas empanadas necesitas para tu juntada. Organiza tu pedido con amigos, divide costos y comparte por WhatsApp.",
+                        "name": "Empanadín - Calculadora de Empanadas por Persona",
+                        "description": "Calcula cuántas empanadas pedir por persona para tu juntada o evento. Estimá docenas para 10, 20 o 50 personas, organizá gustos y dividí gastos fácilmente.",
                         "url": baseUrl,
                         "applicationCategory": "UtilitiesApplication",
                         "operatingSystem": "Any",

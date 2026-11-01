@@ -480,8 +480,8 @@ export default function EmpanadasCalculator() {
         <div style={styles.container}>
           <div style={styles.maxWidth}>
             <div style={styles.header}>
-              <h2 style={styles.title}>🥟 Calculadora de Empanadas</h2>
-              <p style={styles.subtitle}>Organiza tu pedido de empanadas con amigos</p>
+              <h1 style={styles.title}>🥟 Calculadora de Empanadas</h1>
+              <p style={styles.subtitle}>¿Cuántas empanadas por persona se calculan? Organizá tu pedido y dividí gastos</p>
             </div>
 
             <div style={{

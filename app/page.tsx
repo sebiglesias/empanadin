@@ -1,8 +1,5 @@
 import EmpanadasCalculator from "./calculator"
 import FAQ from "./faq"
-import { faqs } from "./faq-data"
-
-const empanadas = ["Carne", "Pollo", "Jamón y Queso", "Caprese", "Verdura", "Humita", "Cebolla y Queso", "Atún"]
 
 export default function Page() {
   return (
@@ -13,52 +10,109 @@ export default function Page() {
           </div>
         </noscript>
 
-        <div style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden", opacity: "0" }}>
-          <h1>Calculadora de Empanadas para Juntadas</h1>
-          <p>
-            Herramienta gratuita para organizar pedidos de empanadas en juntadas con amigos. Calcula cuántas
-            empanadas necesitas por persona, divide costos automáticamente y comparte el pedido por WhatsApp.
-            Perfecto para reuniones en Argentina.
-          </p>
-
-          <h2>Tipos de Empanadas Disponibles</h2>
-          <ul>
-            {empanadas.map((emp) => (
-                <li key={emp}>{emp}</li>
-            ))}
-          </ul>
-
-          <h2>Características</h2>
-          <ul>
-            <li>Agrega personas a tu juntada</li>
-            <li>Selecciona tipos y cantidades de empanadas</li>
-            <li>Calcula costos automáticamente</li>
-            <li>Comparte el resumen por WhatsApp</li>
-            <li>Divide gastos de forma proporcional</li>
-            <li>Guarda tus datos en el navegador</li>
-            <li>Funciona sin conexión (PWA)</li>
-            <li>Gratis y sin publicidad</li>
-          </ul>
-
-          <h2>Cómo Usar</h2>
-          <p>
-            1. Agrega los nombres de las personas que van a comer empanadas<br />
-            2. Selecciona el tipo y cantidad de empanadas para cada persona<br />
-            3. Ingresa el precio por empanada o el precio total del pedido<br />
-            4. Revisa el resumen con lo que cada uno debe pagar<br />
-            5. Comparte por WhatsApp o copia el mensaje<br />
-          </p>
-
-          <h2>Preguntas Frecuentes</h2>
-          {faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
-              </div>
-          ))}
-        </div>
-
         <EmpanadasCalculator />
+
+        {/* Guía Rápida & Tabla de Referencia SEO */}
+        <section
+          aria-label="Guía rápida para calcular empanadas"
+          style={{
+            maxWidth: "800px",
+            margin: "2rem auto 0",
+            padding: "1.75rem",
+            backgroundColor: "white",
+            borderRadius: "0.75rem",
+            border: "1px solid #fed7aa",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.04)",
+            fontFamily: "system-ui, -apple-system, sans-serif",
+          }}
+        >
+          <h2 style={{ fontSize: "1.4rem", fontWeight: "700", color: "#9a3412", marginBottom: "0.5rem" }}>
+            📊 Tabla Rápida: ¿Cuántas Empanadas se Calculan por Persona?
+          </h2>
+          <p style={{ color: "#4b5563", fontSize: "0.95rem", lineHeight: "1.5", marginBottom: "1.25rem" }}>
+            La regla de oro en Argentina es calcular <strong>3 a 4 empanadas por adulto</strong> si son el plato principal.
+            Si hay picada previa, ensaladas o entrada, se calculan <strong>2 a 3 por persona</strong>.
+          </p>
+
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9rem" }}>
+              <thead>
+                <tr style={{ backgroundColor: "#ffedd5", borderBottom: "2px solid #fdba74" }}>
+                  <th style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#9a3412" }}>Invitados</th>
+                  <th style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#9a3412" }}>Plato Único (3.5 c/u)</th>
+                  <th style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#9a3412" }}>Docenas Exactas</th>
+                  <th style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#9a3412" }}>Con Picada (2.5 c/u)</th>
+                  <th style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#9a3412" }}>Copetín / Fiestas (5 c/u)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: "1px solid #fed7aa" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>5 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>18 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>1.5 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>12 empanadas (1 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>25 empanadas</td>
+                </tr>
+                <tr style={{ backgroundColor: "#fff7ed", borderBottom: "1px solid #fed7aa" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>10 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>36 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#ea580c" }}>3 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>25 empanadas (2 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>50 empanadas</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid #fed7aa" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>15 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>54 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#ea580c" }}>4.5 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>38 empanadas (3 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>75 empanadas</td>
+                </tr>
+                <tr style={{ backgroundColor: "#fff7ed", borderBottom: "1px solid #fed7aa" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>20 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>72 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#ea580c" }}>6 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>50 empanadas (4 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>100 empanadas</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid #fed7aa" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>30 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>108 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#ea580c" }}>9 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>75 empanadas (6 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>150 empanadas</td>
+                </tr>
+                <tr style={{ backgroundColor: "#fff7ed" }}>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600" }}>50 personas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>180 empanadas</td>
+                  <td style={{ padding: "0.6rem 0.75rem", fontWeight: "600", color: "#ea580c" }}>15 docenas</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>125 empanadas (10 doc.)</td>
+                  <td style={{ padding: "0.6rem 0.75rem" }}>250 empanadas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginTop: "1.5rem" }}>
+            <div style={{ backgroundColor: "#fff7ed", border: "1px solid #ffedd5", borderRadius: "0.5rem", padding: "0.85rem" }}>
+              <div style={{ fontWeight: "600", color: "#9a3412", marginBottom: "0.25rem", fontSize: "0.9rem" }}>🥟 Adultos vs Niños</div>
+              <p style={{ margin: 0, fontSize: "0.85rem", color: "#4b5563", lineHeight: "1.4" }}>
+                Adultos comen 3 a 4 empanadas estándar. Chicos menores de 10 años consumen entre 1 y 2 empanadas.
+              </p>
+            </div>
+            <div style={{ backgroundColor: "#fff7ed", border: "1px solid #ffedd5", borderRadius: "0.5rem", padding: "0.85rem" }}>
+              <div style={{ fontWeight: "600", color: "#9a3412", marginBottom: "0.25rem", fontSize: "0.9rem" }}>🥩 Rendimiento Carne</div>
+              <p style={{ margin: 0, fontSize: "0.85rem", color: "#4b5563", lineHeight: "1.4" }}>
+                1 kg de carne picada + 1 kg de cebolla rinde de 24 a 30 empanadas medianas (2 a 2.5 docenas).
+              </p>
+            </div>
+            <div style={{ backgroundColor: "#fff7ed", border: "1px solid #ffedd5", borderRadius: "0.5rem", padding: "0.85rem" }}>
+              <div style={{ fontWeight: "600", color: "#9a3412", marginBottom: "0.25rem", fontSize: "0.9rem" }}>🎉 Empanadas de Copetín</div>
+              <p style={{ margin: 0, fontSize: "0.85rem", color: "#4b5563", lineHeight: "1.4" }}>
+                Para cumpleaños de 15 o recepciones, calcular entre 5 y 6 empanaditas de copetín por persona.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <div style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
           <FAQ />
