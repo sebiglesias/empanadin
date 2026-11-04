@@ -138,6 +138,9 @@ export default function Page() {
             <a href="https://sebiglesias.com.ar/picada/" style={{ padding: "0.35rem 0.75rem", border: "1px solid #fdba74", borderRadius: "9999px", color: "#c2410c", textDecoration: "none", fontSize: "0.85rem", background: "white" }}>
               🧀 Picada
             </a>
+            <a href="https://sebiglesias.com.ar/bebidas-fiesta/" style={{ padding: "0.35rem 0.75rem", border: "1px solid #fdba74", borderRadius: "9999px", color: "#c2410c", textDecoration: "none", fontSize: "0.85rem", background: "white" }}>
+              🍻 Bebidas & Hielo
+            </a>
           </div>
         </nav>
 

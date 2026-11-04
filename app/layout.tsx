@@ -14,9 +14,9 @@ const baseUrl = `${domainUrl}${basePath}/`
 
 export const metadata: Metadata = {
     metadataBase: new URL(domainUrl),
-    title: "¿Cuántas Empanadas por Persona? Calculadora de Docenas | Empanadín",
+    title: "🥟 ¿Cuántas Empanadas por Persona? Calculadora de Docenas para Juntadas | Empanadín",
     description:
-        "Calculá cuántas empanadas pedir o cocinar: 3 a 4 por adulto, tabla rápida de docenas para 10, 20 o 50 personas, gustos recomendados y división de gastos.",
+        "Calculá exacto cuántas empanadas comprar o cocinar para tu juntada: 3 a 4 por adulto, tabla rápida de docenas para 10, 20 o 50 personas, gustos recomendados y división de gastos.",
     keywords: [
         "cuantas empanadas por persona",
         "cuantas empanadas se calcula por persona",
