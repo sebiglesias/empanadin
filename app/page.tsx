@@ -1,5 +1,6 @@
 import EmpanadasCalculator from "./calculator"
 import FAQ from "./faq"
+import AdBanner from "@/components/ad-banner"
 
 export default function Page() {
   return (
@@ -11,6 +12,8 @@ export default function Page() {
         </noscript>
 
         <EmpanadasCalculator />
+
+        <AdBanner />
 
         {/* Guía Rápida & Tabla de Referencia SEO */}
         <section
