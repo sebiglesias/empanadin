@@ -41,6 +41,8 @@ export default function EmpanadasCalculator() {
   const [modoPrecio, setModoPrecio] = useState<"porEmpanada" | "total">("porEmpanada")
   const [precioTotal, setPrecioTotal] = useState<number>(0)
   const [aliasTransferencia, setAliasTransferencia] = useState("")
+  const [invitadosRapidos, setInvitadosRapidos] = useState<number>(10)
+  const [modalidadRapida, setModalidadRapida] = useState<"plato-unico" | "con-picada" | "copetin">("plato-unico")
 
   const handleAliasChange = (valor: string) => {
     setAliasTransferencia(valor)
@@ -309,6 +311,32 @@ export default function EmpanadasCalculator() {
   }
   const costoTotal = calcularCostoTotal()
 
+  const ratioRapido = modalidadRapida === "plato-unico" ? 3.5 : modalidadRapida === "con-picada" ? 2.5 : 5.0
+  const totalRapidoUnidades = Math.max(1, Math.round(invitadosRapidos * ratioRapido))
+  const totalRapidoDocenas = (totalRapidoUnidades / 12).toFixed(1)
+  const carneRapido = Math.round(totalRapidoUnidades * 0.4)
+  const jqRapido = Math.round(totalRapidoUnidades * 0.3)
+  const polloRapido = Math.round(totalRapidoUnidades * 0.15)
+  const verduraRapido = Math.max(0, totalRapidoUnidades - carneRapido - jqRapido - polloRapido)
+
+  const aplicarEstimadorRapidoAPersonas = () => {
+    const cantidadACrear = Math.min(invitadosRapidos, 25)
+    const empanadasPorPersona = Math.round(totalRapidoUnidades / invitadosRapidos)
+    const nuevasPersonas: Persona[] = []
+    for (let i = 1; i <= cantidadACrear; i++) {
+      nuevasPersonas.push({
+        id: (Date.now() + i).toString(),
+        nombre: `Invitado ${i}`,
+        empanadas: [
+          { id: `${Date.now()}-${i}-1`, tipo: "Carne", cantidad: Math.max(1, Math.round(empanadasPorPersona * 0.4)) },
+          { id: `${Date.now()}-${i}-2`, tipo: "Jamón y Queso", cantidad: Math.max(1, Math.round(empanadasPorPersona * 0.3)) },
+          { id: `${Date.now()}-${i}-3`, tipo: "Pollo", cantidad: Math.max(1, Math.round(empanadasPorPersona * 0.2)) },
+        ],
+      })
+    }
+    setPersonas(nuevasPersonas)
+  }
+
   const styles = {
     container: {
       minHeight: "100vh",
@@ -496,6 +524,163 @@ export default function EmpanadasCalculator() {
               lineHeight: "1.4"
             }}>
               💡 <strong>¿Cuántas empanadas por persona?</strong> Lo estándar para una juntada son <strong>3 a 4 empanadas por adulto</strong> (o 4 a 5 si comen bastante y no hay entrada).
+            </div>
+
+            {/* Estimador Express de Docenas al Instante */}
+            <div style={{
+              ...styles.card,
+              border: "2px solid #fdba74",
+              background: "linear-gradient(180deg, #ffffff 0%, #fff7ed 100%)",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
+                <h3 style={{ ...styles.cardTitle, margin: 0, color: "#9a3412" }}>
+                  ⚡ Estimador Rápido de Docenas
+                </h3>
+                <span style={{ fontSize: "0.82rem", backgroundColor: "#ffedd5", color: "#9a3412", padding: "0.2rem 0.6rem", borderRadius: "9999px", fontWeight: "600" }}>
+                  Cálculo Instantáneo
+                </span>
+              </div>
+              <p style={{ color: "#4b5563", fontSize: "0.9rem", marginBottom: "1rem" }}>
+                Seleccioná cuántos son para saber de inmediato cuántas empanadas y docenas encargar:
+              </p>
+
+              {/* Selector de Personas Rápidas */}
+              <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+                {[5, 10, 15, 20, 30, 50].map((num) => (
+                  <button
+                    key={num}
+                    type="button"
+                    onClick={() => setInvitadosRapidos(num)}
+                    style={{
+                      padding: "0.45rem 0.85rem",
+                      borderRadius: "0.5rem",
+                      fontSize: "0.9rem",
+                      fontWeight: invitadosRapidos === num ? "700" : "500",
+                      backgroundColor: invitadosRapidos === num ? "#ea580c" : "white",
+                      color: invitadosRapidos === num ? "white" : "#374151",
+                      border: invitadosRapidos === num ? "1px solid #c2410c" : "1px solid #d1d5db",
+                      cursor: "pointer",
+                      transition: "all 0.15s ease",
+                    }}
+                  >
+                    {num} pers.
+                  </button>
+                ))}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginLeft: "auto" }}>
+                  <label htmlFor="custom-invitados" style={{ fontSize: "0.85rem", color: "#4b5563" }}>Otro:</label>
+                  <input
+                    id="custom-invitados"
+                    type="number"
+                    min="1"
+                    max="500"
+                    value={invitadosRapidos}
+                    onChange={(e) => setInvitadosRapidos(Math.max(1, parseInt(e.target.value) || 1))}
+                    style={{ width: "65px", padding: "0.4rem", fontSize: "0.9rem", borderRadius: "0.4rem", border: "1px solid #d1d5db" }}
+                  />
+                </div>
+              </div>
+
+              {/* Modalidad de Consumo */}
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
+                <button
+                  type="button"
+                  onClick={() => setModalidadRapida("plato-unico")}
+                  style={{
+                    padding: "0.4rem 0.75rem",
+                    borderRadius: "0.4rem",
+                    fontSize: "0.82rem",
+                    fontWeight: modalidadRapida === "plato-unico" ? "600" : "400",
+                    backgroundColor: modalidadRapida === "plato-unico" ? "#fed7aa" : "#f9fafb",
+                    color: modalidadRapida === "plato-unico" ? "#9a3412" : "#4b5563",
+                    border: modalidadRapida === "plato-unico" ? "1px solid #ea580c" : "1px solid #e5e7eb",
+                    cursor: "pointer",
+                  }}
+                >
+                  🍽️ Plato Único (3.5 c/u)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setModalidadRapida("con-picada")}
+                  style={{
+                    padding: "0.4rem 0.75rem",
+                    borderRadius: "0.4rem",
+                    fontSize: "0.82rem",
+                    fontWeight: modalidadRapida === "con-picada" ? "600" : "400",
+                    backgroundColor: modalidadRapida === "con-picada" ? "#fed7aa" : "#f9fafb",
+                    color: modalidadRapida === "con-picada" ? "#9a3412" : "#4b5563",
+                    border: modalidadRapida === "con-picada" ? "1px solid #ea580c" : "1px solid #e5e7eb",
+                    cursor: "pointer",
+                  }}
+                >
+                  🧀 Con Picada previa (2.5 c/u)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setModalidadRapida("copetin")}
+                  style={{
+                    padding: "0.4rem 0.75rem",
+                    borderRadius: "0.4rem",
+                    fontSize: "0.82rem",
+                    fontWeight: modalidadRapida === "copetin" ? "600" : "400",
+                    backgroundColor: modalidadRapida === "copetin" ? "#fed7aa" : "#f9fafb",
+                    color: modalidadRapida === "copetin" ? "#9a3412" : "#4b5563",
+                    border: modalidadRapida === "copetin" ? "1px solid #ea580c" : "1px solid #e5e7eb",
+                    cursor: "pointer",
+                  }}
+                >
+                  🎉 Copetín / Cumpleaños (5 c/u)
+                </button>
+              </div>
+
+              {/* Resultado Rápido */}
+              <div style={{
+                backgroundColor: "white",
+                border: "1px solid #fdba74",
+                borderRadius: "0.6rem",
+                padding: "1rem",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                gap: "1rem",
+                alignItems: "center",
+              }}>
+                <div>
+                  <div style={{ fontSize: "0.82rem", color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>Pedido Recomendado</div>
+                  <div style={{ fontSize: "1.75rem", fontWeight: "800", color: "#ea580c" }}>
+                    {totalRapidoDocenas} docenas
+                  </div>
+                  <div style={{ fontSize: "0.9rem", color: "#4b5563", fontWeight: "500" }}>
+                    ({totalRapidoUnidades} empanadas para {invitadosRapidos} personas)
+                  </div>
+                </div>
+
+                <div>
+                  <div style={{ fontSize: "0.82rem", color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.25rem" }}>Reparto Clásico Sugerido</div>
+                  <div style={{ fontSize: "0.85rem", color: "#374151", lineHeight: "1.4" }}>
+                    • <strong>{carneRapido}</strong> de Carne (40%)<br />
+                    • <strong>{jqRapido}</strong> de Jamón y Queso (30%)<br />
+                    • <strong>{polloRapido}</strong> de Pollo (15%)<br />
+                    • <strong>{verduraRapido}</strong> de Verdura / Caprese (15%)
+                  </div>
+                </div>
+
+                <div style={{ textAlign: "right" }}>
+                  <button
+                    type="button"
+                    onClick={aplicarEstimadorRapidoAPersonas}
+                    style={{
+                      ...styles.button,
+                      fontSize: "0.88rem",
+                      padding: "0.6rem 0.9rem",
+                      width: "100%",
+                      backgroundColor: "#15803d",
+                    }}
+                    onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#166534")}
+                    onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#15803d")}
+                  >
+                    📋 Cargar en Pedido Detallado
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div style={styles.card}>
