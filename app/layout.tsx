@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     metadataBase: new URL(domainUrl),
     title: "¿Cuántas Empanadas se Calculan por Persona? | Calculadora de Docenas",
     description:
-        "¿Cuántas empanadas se calculan por persona? La regla: 3 a 4 por adulto (2 con picada). Calculá docenas exactas para 10, 20 o 50 personas, gustos y gastos.",
+        "Calculá al instante cuántas docenas de empanadas pedir para 10, 20 o 50 personas según apetito, edad y si hay picada. Armá los gustos y dividí el gasto.",
     keywords: [
         "cuantas empanadas por persona",
         "cuantas empanadas se calcula por persona",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         siteName: "Empanadín",
         title: "¿Cuántas Empanadas se Calculan por Persona? | Calculadora de Docenas",
         description:
-            "¿Cuántas empanadas se calculan por persona? La regla: 3 a 4 por adulto (2 con picada). Calculá docenas exactas para 10, 20 o 50 personas, gustos y gastos.",
+            "Calculá al instante cuántas docenas de empanadas pedir para 10, 20 o 50 personas según apetito, edad y si hay picada. Armá los gustos y dividí el gasto.",
         images: [
             {
                 url: `${baseUrl}opengraph-image.png`,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         creator: "@sebiglesias",
         title: "¿Cuántas Empanadas se Calculan por Persona? | Calculadora de Docenas",
         description:
-            "¿Cuántas empanadas se calculan por persona? La regla: 3 a 4 por adulto (2 con picada). Calculá docenas para 10, 20 o 50 personas.",
+            "Calculá al instante cuántas docenas de empanadas pedir para 10, 20 o 50 personas según apetito y picada. Repartí gustos y dividí gastos.",
         images: [`${baseUrl}opengraph-image.png`],
     },
 
