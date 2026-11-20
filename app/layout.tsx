@@ -14,9 +14,9 @@ const baseUrl = `${domainUrl}${basePath}/`
 
 export const metadata: Metadata = {
     metadataBase: new URL(domainUrl),
-    title: "¿Cuántas Empanadas se Calculan por Persona? | Calculadora de Docenas",
+    title: "Calculadora de Empanadas por Persona (10, 20, 30 o 50) | ¿Cuántas Docenas Pedir?",
     description:
-        "Calculá al instante cuántas docenas de empanadas pedir para 10, 20 o 50 personas según apetito, edad y si hay picada. Armá los gustos y dividí el gasto.",
+        "¿Cuántas empanadas pedir por persona? Calculá en 1 clic las docenas exactas según apetito, niños y si hay picada previa. Armá la lista de gustos y dividí gastos por WhatsApp.",
     keywords: [
         "cuantas empanadas por persona",
         "cuantas empanadas se calcula por persona",
